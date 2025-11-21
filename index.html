@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Tech Venture Summit 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL SETTINGS --- */
+        :root {
+            --bg-deep: #050507;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2ff;
+            --accent-purple: #bd00ff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- ANIMATED BACKGROUND GRAPHICS --- */
+        .background-fx {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Moving Gradient Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s infinite alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-purple); animation-duration: 15s; }
+        .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-cyan); animation-duration: 12s; animation-delay: -5s; }
+        .blob-3 { top: 40%; left: 40%; width: 30vw; height: 30vw; background: #001eff; animation-duration: 18s; opacity: 0.3; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -50px) scale(1.1); }
+        }
+
+        /* Tech Grid Overlay */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        /* --- COMPONENT STYLES --- */
+        
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #00f2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(to right, #fff, #bd00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Card Hover Effects */
+        .tech-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 255, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(0, 242, 255, 0.2);
+        }
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        /* Button Glow */
+        .neon-btn {
+            background: linear-gradient(90deg, #ec4899, #8b5cf6);
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+        .neon-btn:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050507; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-cyan-500 selection:text-white">
+
+    <div class="background-fx">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <header class="text-center mb-16 relative z-10">
+            <div class="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                <span class="text-xs tracking-widest uppercase text-gray-300">Live Pitch Session</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
+                <span class="block text-white">DEEP TECH</span>
+                <span class="block text-gradient">VENTURE SUMMIT</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                Bridging the gap between visionary deep-tech founders and the future of capital.
+            </p>
+        </header>
+
+        <div class="mb-20 glass-panel rounded-3xl p-1">
+            <div class="bg-black/40 rounded-[20px] px-6 py-12 md:px-12 md:py-16 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-cyan-500 rounded-full filter blur-[80px] opacity-20"></div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Invest?</h2>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">Secure exclusive 1:1 time with founders. Access the deal flow pipeline immediately.</p>
+                
+                <a href="https://forms.gle/i2GwQmv3tEgVsS6F7" target="_blank" class="neon-btn inline-flex items-center px-8 py-4 rounded-full text-white font-semibold text-lg tracking-wide transform transition-transform active:scale-95">
+                    <span>Book Follow-up Appointment</span>
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-4">
+            <div>
+                <h3 class="text-2xl font-bold text-white">Startup Cohort</h3>
+                <p class="text-sm text-gray-500">Class of 2025</p>
+            </div>
+            <div class="mt-4 md:mt-0 font-mono text-cyan-400 text-sm">
+                &gt; Initializing Data Stream... 32 Nodes Found
+            </div>
+        </div>
+
+        <main id="startup-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+            </main>
+
+        <footer class="text-center text-gray-500 text-sm py-8 border-t border-white/5">
+            <p>&copy; 2025 Deep Tech Venture Summit. Built for the bold.</p>
+        </footer>
+
+    </div>
+
+    <template id="startup-template">
+        <div class="tech-card glass-panel rounded-2xl p-6 cursor-pointer flex flex-col h-full group">
+            <div class="flex items-start justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center group-hover:border-cyan-500/50 transition-colors">
+                    <svg class="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                </div>
+                <div class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-white/5 text-gray-400 border border-white/5">
+                    Seed
+                </div>
+            </div>
+            
+            <div class="flex-grow">
+                <h3 class="text-xl font-bold text-white mb-1 startup-name group-hover:text-cyan-300 transition-colors"></h3>
+                <p class="text-sm font-medium text-gray-500 mb-4 flex items-center">
+                    <span class="w-1 h-1 rounded-full bg-purple-500 mr-2"></span>
+                    <span class="founder-name italic"></span>
+                </p>
+                
+                <div class="h-px w-full bg-white/10 mb-4"></div>
+                
+                <p class="text-sm text-gray-300 leading-relaxed startup-focus"></p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-500">
+                <span class="flex items-center gap-1 hover:text-white transition-colors">
+                    Details <span>&rarr;</span>
+                </span>
+                <span class="font-mono opacity-50">#DEEPTECH</span>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startups = [
+                { name: "Aguna Solutions", founder: "Probal Guha Thakurta", focus: "AI-driven predictive maintenance platform for semiconductor equipment." },
+                { name: "Aubha Photonics", founder: "N V S Praneeth", focus: "Modular, open-ended microscopes that can be upgraded with the latest imaging methods." },
+                { name: "CerboTech Education", founder: "Sweta Prajapati", focus: "Neurom, an AI + BCI-powered mental wellness platform." },
+                { name: "Deltora Biopolymers", founder: "Divyesh Dadhaniya", focus: "Fully compostable polymer compounds and packaging solutions to replace conventional plastics." },
+                { name: "Saptarshi Advanced Tech", founder: "Pinakin Thaker", focus: "ASIC/VLSI design, IP development, and specialized training for the semiconductor industry." },
+                { name: "ThinkMotion", founder: "Devang Patel", focus: "AI to automatically generate animated educational videos that simplify difficult topics." },
+                { name: "ABsix Robotics", founder: "Suyash Patidar", focus: "A scalable robotics education platform using proprietary tabletop robots and AI." },
+                { name: "AIResQ ClimSols", founder: "Udit Bhatia", focus: "AquaTwin, a physics-guided AI flood emulator for real-time flood foresight." },
+                { name: "Aspiel", founder: "Prujal Parekh", focus: "A novel syringe with a dedicated aspiration channel for safe and sustained aspiration." },
+                { name: "Byte", founder: "Abhiraj Anil", focus: "A unified AI infra control layer that optimizes compute, automation, and cost control across clouds." },
+                { name: "Cargar", founder: "Raj Anupam", focus: "A patented modular power transfer platform for portable and 100% off-grid EV fast charging." },
+                { name: "Cellegant Energy", founder: "Atul Bhargav", focus: "Hydrogen fuel cell based drone and powerpack delivering high specific energy." },
+                { name: "Emanate Industries", founder: "Nitin Zaveri", focus: "Deep-Tech Solutions and Innovation." },
+                { name: "Galanto Innovations", founder: "Chandan Kumar Jha", focus: "RehabRelive Active Glove, an IP-driven, VR-based system for neuro-motor recovery." },
+                { name: "GENOBOTIC TECHNOLOGIES", founder: "Sriram Bharath Gugulothu", focus: "Manufacture of computer, electronic, and optical products." },
+                { name: "HydroVed", founder: "Sumit Birla", focus: "Water Technology and Sustainability." },
+                { name: "Invengic", founder: "Akhandjyoti Gupta", focus: "A Universal Plug-and-Play Robotic Extension System for transforming MSME machines." },
+                { name: "Kapidhwaj AI", founder: "Neil Dhami", focus: "A plug-and-play edge AI platform that converts CCTV into an intelligent analytics system." },
+                { name: "MiCoB", founder: "Shashank Shekhar", focus: "An end-to-end 3D Concrete Printing (3DCP) ecosystem for automated construction." },
+                { name: "Oralvis Healthcare", founder: "Debashish Saha", focus: "AI-powered oral health ecosystem with a dual-mode intraoral scanner for early detection." },
+                { name: "Oreejoy MedTech", founder: "Uttama Lahiri", focus: "SmartStroleAFA, a wearable, cost-effective insole for gait analysis and fall prevention." },
+                { name: "Plantro", founder: "Bhaskar Datta", focus: "Solutions in food biochemistry, nutrition, and agri-sciences." },
+                { name: "Procyl Therapeutics", founder: "Sivapriya Kirubakaran", focus: "Developing cell line creation and protein synthesis technology for cancer therapies." },
+                { name: "REVY Environmental", founder: "Vanita Prasad", focus: "Indigenous biotechnology for efficient waste-to-energy conversion." },
+                { name: "SATVIRAN HEALTH TECH", founder: "Pankaj", focus: "Health Tech & Diagnostics." },
+                { name: "Shoonya Recycling", founder: "Ankit Agarwal", focus: "India’s first vertically integrated Lithium-Ion battery waste management company." },
+                { name: "SynerSense", founder: "Shri Gunjan P", focus: "MoveAxon, a wearable motion sensor system for digital, evidence-based gait analysis." },
+                { name: "Techinnovate Mobility", founder: "Darpan Kadu", focus: "AshvaMitra, a semi-autonomous modular electric retrofit system for trucks." },
+                { name: "TRINANO TECHNOLOGIES", founder: "Dr Harsh Sethi", focus: "A patented nano coating that increases solar panel energy output and life." },
+                { name: "White Carbon Motors", founder: "Pratik Singh Sankhla", focus: "A station-based micromobility ecosystem with O3 e-bikes and battery swapping." },
+                { name: "Climyn", founder: "Chirag Panchal", focus: "An AI-native Climate Intelligence Platform to personalize indoor climate." },
+                { name: "OcaenLux CCU", founder: "Gaurav Raghave", focus: "OceanTree, a bio-inspired air purification system that mimics photosynthesis." }
+            ];
+
+            const container = document.getElementById('startup-container');
+            const template = document.getElementById('startup-template');
+            
+            startups.forEach((startup, index) => {
+                const clone = template.content.cloneNode(true);
+                clone.querySelector('.startup-name').textContent = startup.name;
+                clone.querySelector('.founder-name').textContent = startup.founder;
+                clone.querySelector('.startup-focus').textContent = startup.focus;
+                
+                // Add stagger animation delay
+                const card = clone.querySelector('.tech-card');
+                card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05}s backwards`;
+                
+                container.appendChild(clone);
+            });
+        });
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body>
+</html>
